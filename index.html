@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Biology Policy Chatbot</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' style='dominant-baseline:central;text-anchor:middle;font-size:80px;'%3E💬%3C/text%3E%3C/svg%3E">
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap');
+
+        :root {
+            --primary-bg: #E0F7FA; /* Very light, soft pastel blue */
+            --secondary-bg: #F0F8FF; /* Slightly off-white light blue for sections */
+            --text-dark: #2C3E50; /* Dark desaturated blue for readability */
+            --accent-primary: #81D4FA; /* Medium pastel blue for headings */
+            --accent-secondary: #4FC3F7; /* Slightly brighter pastel blue for links/highlights */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Slightly stronger shadow for definition */
+            --footer-bg: #34495E; /* Darker blue for footer */
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark); /* Headings use dark text for contrast on light backgrounds */
+            font-weight: 700;
+            margin-top: 0;
+            display: flex; /* Allow emoji and text on same line */
+            align-items: center; /* Vertically align emoji with text */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px var(--shadow-light);
+            color: white; /* Header H1 remains white */
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--shadow-light);
+            width: 100%;
+        }
+
+        header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            text-align: left;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--secondary-bg);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '✅'; /* Green checkmark */
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary); /* Use primary accent for checkmark */
+            font-weight: bold;
+        }
+
+        .section-icon {
+            font-size: 1.5em; /* Adjust emoji size */
+            margin-right: 15px; /* Space between emoji and text */
+            color: var(--accent-secondary); /* Give emoji a specific color */
+        }
+
+        .example-blockquote {
+            background-color: var(--secondary-bg);
+            border-left: 5px solid var(--accent-secondary);
+            margin: 20px 0;
+            padding: 20px 25px;
+            font-style: italic;
+            color: #555;
+            border-radius: 5px;
+            font-size: 1.1em;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+
+        .example-prompts ul {
+            list-style: disc; /* Use regular discs for prompts */
+            padding-left: 20px;
+        }
+
+        .example-prompts li {
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 0; /* Reset padding for list-style disc */
+        }
+
+        .example-prompts li::before {
+            content: ''; /* Remove checkmark for this list */
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto; /* Pushes footer to the bottom */
+            width: 100%;
+            box-shadow: 0 -2px 10px var(--shadow-light);
+        }
+
+        footer h3 {
+            color: white; /* Footer H3 remains white */
+        }
+
+        footer a {
+            color: var(--accent-primary); /* Use primary accent for footer links */
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .affiliation {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            header {
+                padding: 30px 15px;
+            }
+            section {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            .container {
+                padding: 15px;
+            }
+            footer {
+                padding: 25px 15px;
+            }
+            h2, h3 {
+              justify-content: flex-start; /* Align emoji/text to left on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            section {
+                padding: 20px;
+            }
+            .example-blockquote {
+                padding: 15px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>First Year Biology Policy Chatbot</h1>
+            <p>Your instant guide to all First Year Biology Assessment Policies and Procedures.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section 1: Why Use the Chatbot? -->
+        <section>
+            <h2><span class="section-icon" aria-hidden="true">🤖</span> Navigating Policies and Assessments, Made Easier</h2>
+            <p>We understand how overwhelming it can be to sift through lengthy unit outlines and assessment guidelines. Our new RAG (Retrieval-Augmented Generation) AI Chatbot is here to help, trained exclusively on the official First Year Biology Assessment Policies and Procedures. It's designed to support you not just in understanding policies, but also in effectively tackling your assessments.</p>
+            <h3>Key Benefits:</h3>
+            <ul>
+                <li>Clear Guidance: Get straightforward answers on policies like late penalties, submission rules, and extensions, helping you confidently plan your assessments.</li>
+                <li>Assessment Support: Receive assistance with understanding assessment requirements and how to approach them, enhancing your success.</li>
+                <li>Always Here for You: Available 24/7, providing support whenever you need it, day or night.</li>
+                <li>Reliable Information: All responses are directly sourced from official unit documents, so you can trust the accuracy.</li>
+            </ul>
+        </section>
+
+        <!-- Section 2: How It Works & Trust -->
+        <section>
+            <h2><span class="section-icon" aria-hidden="true">🔍</span> Reliable Answers, Straight from the Source</h2>
+            <p>To ensure you always receive accurate and dependable information, our chatbot operates with a specific, focused scope. When it provides an answer, it thoughtfully cites the precise document (e.g., 'Unit Outline, Section 3.1') from which it drew its response, giving you full confidence in its guidance.</p>
+            <blockquote class="example-blockquote">
+                <p><strong>Example:</strong> "What is the penalty for submitting my lab report 2 hours late?"<br>
+                <strong>Chatbot Response:</strong> "The penalty is 5% of the total available marks deducted for every hour (or part thereof) the submission is late. Source: Assessment Handbook, p. 12"</p>
+            </blockquote>
+        </section>
+
+        <!-- Section 3: Getting Started -->
+        <section class="example-prompts">
+            <h2><span class="section-icon" aria-hidden="true">💡</span> Try These Questions to Get Started:</h2>
+            <ul>
+                <li>"What is the policy for requesting an extension?"</li>
+                <li>"Where do I upload my final presentation file?"</li>
+                <li>"What topics are covered in the mid-semester quiz?"</li>
+                <li>"What is the weighting of the practical component?"</li>
+                <li>"Can you help me understand the requirements for the lab report?"</li>
+                <li>"What are some common pitfalls to avoid in the practical assessment?"</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section: Support and Feedback -->
+    <footer>
+        <div class="container">
+            <h3>🤝 Your Feedback Helps Us Grow</h3>
+            <p>This chatbot is a pilot project, developed to genuinely support you throughout your First Year Biology studies. We are continuously working to improve its accuracy and helpfulness. If you encounter an answer that seems unclear, incorrect, or if you have suggestions for improvement, please don't hesitate to share. Your input is invaluable in making this tool better for everyone.</p>
+            <p><a href="https://example.com/feedback-survey" target="_blank" rel="noopener noreferrer">Provide Feedback/Evaluation Survey</a></p>
+            <p class="affiliation">Developed for First Year Biology Students by [Your Name/Unit Coordinator Team].</p>
+        </div>
+    </footer>
+</body>
+</html>
