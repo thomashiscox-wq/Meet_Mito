@@ -254,7 +254,7 @@
     <main class="container">
         <!-- Section 1: Why Use the Chatbot? -->
         <section>
-            <h2><span class="section-icon" aria-hidden="true">🤖</span> I can hep you! Complete your assessments, understand our policies and more</h2>
+            <h2><span class="section-icon" aria-hidden="true">🤖</span> I can hep you!</h2>
             <h2><span class="section-icon" aria-hidden="true"></span> I can help you complete your assessments, understand our policies and more</h2>
             <p>We understand how overwhelming starting uni. There's so much information all at once.  Our new Mito AI Chatbot is here to help, trained exclusively on the official First Year Biology Assessment Policies and Procedures, marking rubrics and assessment instructions. It's designed to support you not just in understanding policies, but also in effectively tackling your assessments.</p>
             <h3>Key Benefits:</h3>
@@ -268,7 +268,7 @@
 
         <!-- Section 2: Getting Started -->
         <section class="example-prompts">
-            <h2><span class="section-icon" aria-hidden="true">💡</span> Try These Questions to Get Started:</h2>
+            <h2><span class="section-icon" aria-hidden="true">💡</span> Click the button on the right to ask Mito a question.  Try These Questions to Get Started:</h2>
             <ul>
                 <li>"How do I apply for an extension to my assessment deadline?"</li>
                 <li>"Where do I upload my final presentation file?"</li>
@@ -278,12 +278,39 @@
             </ul>
         </section>
     </main>
-<iframe
- src="https://udify.app/chatbot/OqXnBWNG5CTmVajh"
- style="width: 100%; height: 100%; min-height: 700px"
- frameborder="0"
- allow="microphone">
-</iframe>
+<script>
+ window.difyChatbotConfig = {
+  token: 'OqXnBWNG5CTmVajh',
+  inputs: {
+    // You can define the inputs from the Start node here
+    // key is the variable name
+    // e.g.
+    // name: "NAME"
+  },
+  systemVariables: {
+    // user_id: 'YOU CAN DEFINE USER ID HERE',
+    // conversation_id: 'YOU CAN DEFINE CONVERSATION ID HERE, IT MUST BE A VALID UUID',
+  },
+  userVariables: {
+    // avatar_url: 'YOU CAN DEFINE USER AVATAR URL HERE',
+    // name: 'YOU CAN DEFINE USER NAME HERE',
+  },
+ }
+</script>
+<script
+ src="https://udify.app/embed.min.js"
+ id="OqXnBWNG5CTmVajh"
+ defer>
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #1C64F2 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 40rem !important;
+  }
+</style>
     
     <!-- Footer Section: Support and Feedback -->
     <footer>
@@ -297,5 +324,6 @@
 </body>
 
 </html>
+
 
 
